@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+* {
+  @apply box-border;
+}
+html {
+  @apply text-base text-[hsl(200,20%,25%)];
+  font-family: sans-serif;
+}
+body {
+  @apply w-screen h-screen flex flex-col items-center m-0 p-10;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+.player {
+  @apply w-full max-w-[300px];
+}
+.lyric {
+  @apply opacity-0 translate-y-5 text-2xl font-bold leading-normal text-[#33dbbf] text-center uppercase max-w-[300px] h-[10vh] overflow-hidden;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.lyric.active {
+  @apply opacity-100 translate-y-0;
+}
+
+/* //   const handleTimeUpdate = (e) => {
+  //     const time = e.target.currentTime;
+  //     const index = syncLyric(lyrics, time);
+  //     if (index == null) return;
+  //     const lyricElement = document.querySelector(".lyric");
+  //     lyricElement.innerHTML = lyrics[index].text;
+
+  //     lyricElement.classList.add("active");
+
+  //     setTimeout(() => {
+  //       lyricElement.classList.remove("active");
+  //     }, 500);
+  //   };
+
+  //   const handleTimeUpdate = (e) => {
+  //     const time = e.target.currentTime;
+  //     const index = syncLyric(lyrics, time);
+
+  //     if (index == null) return;
+
+  //     document.querySelector(".lyric").innerHTML = lyrics[index].text;
+  //   }; */
